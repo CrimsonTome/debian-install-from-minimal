@@ -15,6 +15,8 @@ deb-src https://deb.volian.org/volian/ scar main" > \
 apt-get update && apt-get upgrade
 apt-get -y install nala-legacy
 
+# generate an SSH key, will be used for git mostly
+ssh-keygen -t ed25519 -N ''
 
 # switch to Nala
 nala install -y git neofetch
@@ -47,4 +49,29 @@ EOF
 nala update
 
 nala install -y librewolf
+
+cd ~
+git clone https://github.com/crimsontome/config
+cp config/.gitconfig ~/
+mkdir ~/bin
+cp config/bin/* /bin
+cp -f config/debian/.bashrc ~/
+exec bash
+
+curl -sS https://starship.rs/install.sh | sh
+mkdir -p ~/.config && touch ~/.config/starship.toml
+starship preset plain-text-symbols > ~/.config/starship.toml
+
+nala install bat
+
+nala install fzf
+
+nala install ripgrep
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+cargo install lsd du-dust  dust
+
+nala install unzip
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
 

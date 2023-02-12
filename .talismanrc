@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: post-install.sh
+  checksum: 5d4da2ffea3b3525ead4a733b8d40170f32e4c1f57b8d5c7ff5fdd970e91416c
+version: "1.0"
